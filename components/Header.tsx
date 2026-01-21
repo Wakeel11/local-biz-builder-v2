@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Phone, Hammer, ChevronDown, Star } from 'lucide-react'; // Added Star icon
+import { Menu, X, Phone, Hammer, ChevronDown, Star, ShieldCheck } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants';
 
 const Header: React.FC = () => {
@@ -8,87 +8,102 @@ const Header: React.FC = () => {
 
   const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
-  // Dynamic Category for LeadSmart
+  // Dynamic Category for LeadSmart Automation
   const nicheCategory = BUSINESS_INFO.name.toLowerCase().includes('plumbing') ? 'plumbing' : 'roofing';
 
   return (
-    <header className="fixed w-full z-50 shadow-md">
-      {/* 1. Top CTA Bar (Emergency Phone) */}
-      <div className="bg-[#1e3a8a] text-white py-2 px-4 text-center text-sm md:text-base font-medium tracking-wide">
+    <header className="fixed w-full z-50 shadow-2xl">
+      {/* 1. TOP EMERGENCY BAR (High Trust) */}
+      <div className="bg-[#1e3a8a] text-white py-2.5 px-4 border-b border-blue-900">
         <div className="container mx-auto flex justify-between items-center max-w-7xl">
-          <span className="hidden md:inline text-gray-200 uppercase font-bold text-xs tracking-widest">
-            Trusted Experts in Illinois, Wisconsin & Indiana
+          <span className="hidden lg:flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-blue-200">
+            <ShieldCheck size={14} /> Trusted Experts in {BUSINESS_INFO.serviceArea}
           </span>
-          <a href={`tel:${BUSINESS_INFO.phone}`} className="flex items-center gap-2 mx-auto md:mx-0 hover:text-orange-400 transition-colors">
-              <span className="bg-[#f97316] px-2 py-0.5 rounded text-white text-xs font-bold uppercase">Emergency?</span>
-              <span className="font-bold flex items-center gap-1">
-                <Phone size={16} fill="currentColor" />
-                Call {BUSINESS_INFO.phone}
+          <a href={`tel:${BUSINESS_INFO.phone}`} className="flex items-center gap-3 mx-auto lg:mx-0 group">
+              <span className="bg-[#f97316] px-3 py-1 rounded-full text-white text-[10px] font-black uppercase animate-pulse">Emergency?</span>
+              <span className="font-black flex items-center gap-2 text-sm md:text-base group-hover:text-orange-400 transition-colors">
+                <Phone size={18} fill="currentColor" />
+                CALL {BUSINESS_INFO.phone}
               </span>
           </a>
         </div>
       </div>
 
-      {/* 2. Main Navigation (Logo & Menu) */}
-      <div className="bg-white border-b border-gray-200">
+      {/* 2. MAIN NAVIGATION (Logo & Menu) */}
+      <div className="bg-white py-1">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="flex justify-between items-center h-16 md:h-20">
+          <div className="flex justify-between items-center h-20 md:h-24">
             
-            <Link to="/" className="flex items-center gap-2 group flex-shrink-0" onClick={() => setIsMobileMenuOpen(false)}>
-              <div className="bg-[#1e3a8a] p-2 rounded text-white group-hover:bg-slate-700 transition-colors">
-                <Hammer size={24} />
+            {/* DYNAMIC LOGO SECTION */}
+            <Link to="/" className="flex items-center gap-3 group flex-shrink-0" onClick={() => setIsMobileMenuOpen(false)}>
+              <div className="bg-[#1e3a8a] p-3 rounded-xl text-white shadow-lg group-hover:bg-slate-700 transition-all transform group-hover:rotate-3">
+                <Hammer size={28} />
               </div>
-              <div>
-                <h1 className="text-xl md:text-2xl font-extrabold text-slate-800 tracking-tight leading-none uppercase">
+              <div className="flex flex-col">
+                <h1 className="text-2xl md:text-3xl font-[900] text-slate-800 tracking-tighter leading-none uppercase">
                   {BUSINESS_INFO.name.split(' ')[0]}
                 </h1>
-                <p className="text-xs text-gray-500 font-semibold tracking-widest uppercase">
+                <p className="text-[10px] md:text-xs text-[#f97316] font-black tracking-[0.3em] uppercase mt-1">
                   {BUSINESS_INFO.name.split(' ').slice(1).join(' ')}
                 </p>
               </div>
             </Link>
 
-            <nav className="hidden lg:flex flex-1 justify-center items-center gap-8">
-              <Link to="/" className="text-sm font-bold text-gray-700 hover:text-[#1e3a8a] transition-colors uppercase tracking-tight">Home</Link>
-              <Link to="/areas-we-serve" className="text-sm font-bold text-gray-700 hover:text-[#1e3a8a] transition-colors uppercase tracking-tight">Areas We Serve</Link>
-              <Link to="/contact" className="text-sm font-bold text-gray-700 hover:text-[#1e3a8a] transition-colors uppercase tracking-tight">Contact</Link>
+            {/* DESKTOP NAV */}
+            <nav className="hidden lg:flex flex-1 justify-center items-center gap-10">
+              {['Home', 'Areas We Serve', 'Contact'].map((item) => (
+                <Link 
+                  key={item}
+                  to={item === 'Home' ? '/' : `/${item.toLowerCase().replace(/ /g, '-')}`} 
+                  className="text-sm font-black text-slate-600 hover:text-[#1e3a8a] transition-colors uppercase tracking-widest border-b-2 border-transparent hover:border-[#f97316] pb-1"
+                >
+                  {item}
+                </Link>
+              ))}
             </nav>
 
-            <div className="hidden lg:flex items-center flex-shrink-0">
+            {/* QUICK CALL CTA */}
+            <div className="hidden lg:flex items-center">
               <a 
                 href={`tel:${BUSINESS_INFO.phone}`}
-                className="ml-4 bg-[#f97316] hover:bg-orange-600 text-white px-6 py-3 rounded font-black transition-all shadow-md transform hover:-translate-y-0.5 uppercase text-sm"
+                className="bg-[#1e3a8a] hover:bg-slate-800 text-white px-8 py-4 rounded-2xl font-black transition-all shadow-xl hover:shadow-2xl uppercase text-xs tracking-widest flex items-center gap-2"
               >
-                Get a Quote
+                Get Help Now
               </a>
             </div>
 
-            <button onClick={toggleMenu} className="lg:hidden text-gray-700 hover:text-[#1e3a8a] focus:outline-none">
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {/* MOBILE TOGGLE */}
+            <button onClick={toggleMenu} className="lg:hidden p-2 text-slate-800 hover:bg-slate-100 rounded-xl transition-colors">
+              {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* 3. NEW VIP CTA STRIP (Code 2 - LeadSmart Integration) */}
-      <div className="bg-gray-50 py-3 border-b border-gray-200 shadow-inner">
-        <div className="container mx-auto px-4 flex justify-center">
+      {/* 3. VIP LEADSMART CTA STRIP (Optimized Spacing) */}
+      <div className="bg-[#22c55e] py-4 border-t border-green-600 shadow-inner">
+        <div className="container mx-auto px-4 flex justify-center items-center">
           <a 
             href={`//leads.leadsmartinc.com/?api_key=eccf565586cda416df8b89f66df641fee9a1bcb8&affiliate_source=modazawra1&category=${nicheCategory}&funnel=3&buttons=btn-success&step=1`} 
-            className="polyares-quote-button bg-[#22c55e] text-white px-8 py-3 rounded-full font-black uppercase text-sm hover:bg-green-600 transition-all shadow-md flex items-center gap-2 transform hover:scale-105"
+            className="polyares-quote-button flex items-center gap-3 text-white font-[900] uppercase text-sm md:text-base tracking-widest hover:scale-105 transition-transform"
           >
-            <Star size={16} fill="white" /> Get a Free Estimate — Limited Time!
+            <Star size={20} fill="white" className="animate-spin-slow" /> 
+            <span>Get a Free Estimate — Limited Time Local Offer!</span>
+            <ChevronDown size={20} className="-rotate-90 hidden md:block" />
           </a>
         </div>
       </div>
 
-      {/* 4. Mobile Nav Dropdown */}
+      {/* 4. MOBILE DROPDOWN */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full left-0 top-[100%] max-h-[85vh] overflow-y-auto">
-          <nav className="flex flex-col p-4 space-y-1">
-            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-3 rounded hover:bg-gray-50 text-gray-800 font-bold border-b border-gray-50">HOME</Link>
-            <Link to="/areas-we-serve" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-3 rounded hover:bg-gray-50 text-gray-800 font-bold border-b border-gray-50">AREAS WE SERVE</Link>
-            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-3 rounded hover:bg-gray-50 text-gray-800 font-bold border-b border-gray-50">CONTACT</Link>
+        <div className="lg:hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full left-0 top-[100%] animate-in fade-in slide-in-from-top-5">
+          <nav className="flex flex-col p-6 space-y-4">
+            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-black text-slate-800 uppercase border-b border-gray-100 pb-4">Home</Link>
+            <Link to="/areas-we-serve" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-black text-slate-800 uppercase border-b border-gray-200 pb-4">Areas We Serve</Link>
+            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-black text-slate-800 uppercase pb-2">Contact</Link>
+            <a href={`tel:${BUSINESS_INFO.phone}`} className="w-full bg-[#f97316] text-white py-5 rounded-2xl text-center font-black uppercase text-xl shadow-lg">
+              CALL {BUSINESS_INFO.phone}
+            </a>
           </nav>
         </div>
       )}
