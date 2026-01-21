@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Phone, ShieldCheck, Clock, Award, CheckCircle, Star, Quote, ThumbsUp } from 'lucide-react';
+import { Phone, ShieldCheck, Clock, Award, CheckCircle, Star, Quote, ThumbsUp, ArrowRight } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants';
 import { illinoisCities } from '../cities';
 
@@ -7,23 +7,32 @@ const Home = () => {
   const primaryCity = illinoisCities[0].city;
   const niche = BUSINESS_INFO.name.toLowerCase().includes('plumbing') ? 'plumbing' : 'roofing';
 
-  // LEADSMART WIDGET INITIALIZATION LOGIC
   useEffect(() => {
-    const initWidget = () => {
-      // Check if LeadSmart script from index.html is loaded
-      if ((window as any).LeadSmart && (window as any).LeadSmart.initialize) {
+    // Robust Watcher for LeadSmart Widget
+    const observer = new MutationObserver(() => {
+      const widgetDiv = document.querySelector('.po-request-quotes-box');
+      if (widgetDiv && (window as any).LeadSmart) {
         (window as any).LeadSmart.initialize();
+        observer.disconnect(); // Stop watching once loaded
       }
-    };
+    });
 
-    // Small delay to ensure DOM is ready
-    const timer = setTimeout(initWidget, 1000);
-    return () => clearTimeout(timer);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Fallback timer
+    const timer = setTimeout(() => {
+      if ((window as any).LeadSmart) (window as any).LeadSmart.initialize();
+    }, 2000);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
     <div className="pt-24">
-      {/* 1. VIP HERO SECTION */}
+      {/* 1. VIP HERO SECTION WITH FORM BOX */}
       <section className="relative bg-[#1e3a8a] text-white py-24 px-4 overflow-hidden min-h-[700px] flex items-center">
         <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
         
@@ -44,10 +53,10 @@ const Home = () => {
             </a>
           </div>
 
-          {/* LEADSMART WIDGET BOX (Code 1) */}
+          {/* MASTER QUOTE BOX (Code 1 Integration) */}
           <div className="bg-white p-10 rounded-[40px] shadow-2xl border-t-[10px] border-[#f97316] text-gray-800">
-            <h3 className="text-3xl font-black uppercase mb-2 text-[#1e3a8a] text-center">Request Free Quotes</h3>
-            <p className="text-center text-gray-500 mb-6 font-bold uppercase text-xs tracking-widest italic tracking-widest">Fast & Secure Service Quotes</p>
+            <h3 className="text-3xl font-black uppercase mb-2 text-[#1e3a8a] text-center text-slate-800">Request Free Quotes</h3>
+            <p className="text-center text-gray-500 mb-6 font-bold uppercase text-xs tracking-widest italic tracking-widest">Secure Professional Service Quotes</p>
             <div 
               className="po-request-quotes-box min-h-[300px]" 
               data-buttons="btn-success" 
@@ -58,7 +67,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 2. EEAT TRUST SECTION (Authority Builder) */}
+      {/* 2. EEAT TRUST SECTION */}
       <section className="py-24 bg-gray-50 border-b border-gray-100">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
@@ -80,26 +89,21 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 3. EXPERT SOLUTIONS (150+ Words SEO Content) */}
+      {/* 3. EXPERT SOLUTIONS (Content Rich) */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-black text-[#1e3a8a] mb-8 uppercase leading-tight italic">Professional Local Expertise You Can Count On</h2>
-            <div className="text-gray-700 text-lg leading-relaxed space-y-6 mb-10">
+            <h2 className="text-4xl md:text-5xl font-black text-[#1e3a8a] mb-8 uppercase leading-tight italic">Expert Support You Can Count On</h2>
+            <div className="text-gray-700 text-lg leading-relaxed space-y-6 mb-10 text-slate-600">
               <p>
                 At {BUSINESS_INFO.name}, we understand that {niche} emergencies don't wait for business hours. Since {BUSINESS_INFO.established}, our family-owned business has been dedicated to providing the residents of {primaryCity} with high-quality, reliable solutions. Our certified technicians are strategically located across Illinois, Wisconsin, and Indiana to ensure that when a crisis strikes, we are at your door in record time. 
               </p>
               <p>
-                Whether you are dealing with a sudden failure or looking for expert preventative maintenance, we utilize modern specialized equipment to deliver lasting results. We take pride in our transparent pricing model—no surprises, no hidden fees, just honest work.
+                Whether you are dealing with a sudden failure or looking for expert preventative maintenance, we utilize modern specialized equipment to deliver lasting results. We take pride in our transparent pricing model—no surprises, no hidden fees.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-bold text-gray-800 uppercase text-sm">
-               {['Certified Technicians', 'Transparent Pricing', '24/7 Emergency Help', 'Licensed & Insured'].map(t => (
-                 <span key={t} className="flex items-center gap-2"><CheckCircle className="text-[#f97316]" /> {t}</span>
-               ))}
-            </div>
           </div>
-          <div className="relative rounded-[40px] overflow-hidden shadow-2xl h-[500px]">
+          <div className="relative rounded-[40px] overflow-hidden shadow-2xl h-[450px]">
              <iframe 
                 width="100%" height="100%" frameBorder="0" scrolling="no" 
                 src={`https://maps.google.com/maps?q=${primaryCity},IL&t=&z=13&ie=UTF8&iwloc=&output=embed`}
@@ -112,21 +116,46 @@ const Home = () => {
       {/* 4. KEYWORD-RICH TESTIMONIALS */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 text-center max-w-7xl">
-          <h2 className="text-4xl font-black uppercase text-[#1e3a8a] mb-16 italic">Trusted By Your Neighbors</h2>
+          <h2 className="text-4xl font-black uppercase text-[#1e3a8a] mb-16 italic">What Your Neighbors Are Saying</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
             {[
-              { name: "John D.", city: primaryCity, text: `The best emergency ${niche} service in ${primaryCity}! Arrived in 20 mins and fixed the issue.` },
+              { name: "John D.", city: primaryCity, text: `The best emergency ${niche} service in ${primaryCity}! Fixed our issue perfectly.` },
               { name: "Sarah M.", city: "Gurnee", text: `Highly recommend! Professional team, upfront pricing, and they really know their ${niche} stuff.` },
-              { name: "Mike R.", city: "North Chicago", text: `I was stressed about my emergency failure, but they handled it with ease. Since 2016, they have never let me down.` }
+              { name: "Mike R.", city: "North Chicago", text: "Since 2016, they have never let me down. Professional local pros." }
             ].map((rev, i) => (
               <div key={i} className="bg-white p-10 rounded-[32px] border-b-8 border-[#f97316] relative shadow-sm">
                 <Quote className="absolute top-6 right-6 text-gray-100" size={40} />
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="#f97316" className="text-[#f97316]" />)}
                 </div>
-                <p className="text-gray-700 font-medium mb-6 italic leading-relaxed font-serif">"{rev.text}"</p>
+                <p className="text-gray-700 font-medium mb-6 italic">"{rev.text}"</p>
                 <div className="font-black text-[#1e3a8a] uppercase text-sm">{rev.name} — {rev.city}, IL</div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. AREAS WE SERVE (Restored VIP Grid) */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 text-center max-w-7xl">
+          <h2 className="text-4xl font-black mb-4 uppercase text-[#1e3a8a]">Areas We Serve</h2>
+          <p className="text-gray-600 mb-12 max-w-2xl mx-auto font-medium">
+            Local expert service available 24 hours a day in the following Illinois, Wisconsin, and Indiana communities.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {illinoisCities.map((city) => (
+              <a 
+                key={city.slug} 
+                href={`/#/${city.slug}`} 
+                className="group bg-gray-50 p-8 rounded-2xl shadow-sm border-b-8 border-transparent hover:border-[#f97316] transition-all text-left"
+              >
+                <h3 className="text-2xl font-black text-[#1e3a8a] mb-2 uppercase group-hover:text-[#f97316] transition-colors">{city.city}</h3>
+                <p className="text-gray-500 mb-4 text-sm line-clamp-2">{city.meta_description}</p>
+                <span className="flex items-center gap-2 font-bold text-[#f97316] uppercase text-xs tracking-widest">
+                  Explore Services <ArrowRight size={14} />
+                </span>
+              </a>
             ))}
           </div>
         </div>
