@@ -1,35 +1,31 @@
-export interface City {
-  name: string;
-  slug: string;
-  zip?: string;
-}
+// src/cities.ts
 
-export const illinoisCities: City[] = [
-  { name: "Waukegan", slug: "waukegan", zip: "60085" },
-  { name: "Gurnee", slug: "gurnee", zip: "60031" },
-  { name: "Zion", slug: "zion", zip: "60099" },
-  { name: "Libertyville", slug: "libertyville", zip: "60048" },
-  { name: "North Chicago", slug: "north-chicago", zip: "60064" },
-  { name: "Beach Park", slug: "beach-park", zip: "60087" },
-  { name: "Mundelein", slug: "mundelein", zip: "60060" },
-  { name: "Round Lake", slug: "round-lake", zip: "60073" },
-  { name: "Antioch", slug: "antioch", zip: "60002" },
-  { name: "Grayslake", slug: "grayslake", zip: "60030" },
-  { name: "Lake Villa", slug: "lake-villa", zip: "60046" },
-  { name: "Wadsworth", slug: "wadsworth", zip: "60083" },
-  { name: "Winthrop Harbor", slug: "winthrop-harbor", zip: "60096" },
-  { name: "Vernon Hills", slug: "vernon-hills", zip: "60061" },
-  { name: "Lake Forest", slug: "lake-forest", zip: "60045" },
-  { name: "Highland Park", slug: "highland-park", zip: "60035" },
-  { name: "Deerfield", slug: "deerfield", zip: "60015" },
-  { name: "Buffalo Grove", slug: "buffalo-grove", zip: "60089" },
-  { name: "Lake Zurich", slug: "lake-zurich", zip: "60047" },
-  { name: "Fox Lake", slug: "fox-lake", zip: "60020" },
-  { name: "Wauconda", slug: "wauconda", zip: "60084" },
-  { name: "Lindenhurst", slug: "lindenhurst", zip: "60046" },
-  { name: "Gages Lake", slug: "gages-lake", zip: "60030" },
-  { name: "Old Mill Creek", slug: "old-mill-creek", zip: "60083" },
-  { name: "Park City", slug: "park-city", zip: "60085" },
-  { name: "Round Lake Beach", slug: "round-lake-beach", zip: "60073" },
-  { name: "Hawthorn Woods", slug: "hawthorn-woods", zip: "60047" }
+export const citiesData = [
+  {
+    city: "Waukegan",
+    slug: "waukegan-emergency-plumbing",
+    h1: "Emergency Plumbing Services in Waukegan, IL",
+    content: "Waukegan Plumbing Experts provides rapid response solutions for all your urgent pipe and fixture needs. Our team of certified professionals is available 24/7 to handle burst pipes, severe clogs, and water heater failures...",
+    metaTitle: "Emergency Plumbing Waukegan IL | 24/7 Service",
+    metaDescription: "Fast emergency plumbing in Waukegan. 24/7 repairs for burst pipes and leaks by Waukegan Plumbing Experts. Call now!",
+    landmarks: ["Genesee Theatre", "Waukegan Harbor & Marina", "Bowen Park"]
+  },
+  {
+    city: "Gurnee",
+    slug: "gurnee-emergency-plumbing",
+    h1: "24/7 Emergency Plumbers in Gurnee, IL",
+    content: "Facing a plumbing emergency in Gurnee requires immediate professional intervention to avoid costly water damage and structural issues. Waukegan Plumbing Experts offers around-the-clock emergency assistance...",
+    metaTitle: "24/7 Emergency Plumber Gurnee IL | Waukegan Plumbing Experts",
+    metaDescription: "Reliable emergency plumbing services in Gurnee. Available 24/7 for leaks, clogs, and pipe repairs. Expert local technicians.",
+    landmarks: ["Six Flags Great America", "Gurnee Mills", "Gurnee Park District"]
+  },
+  {
+    city: "North Chicago",
+    slug: "north-chicago-emergency-plumbing",
+    h1: "Reliable Emergency Plumbing North Chicago, IL",
+    content: "Waukegan Plumbing Experts is dedicated to providing North Chicago residents with dependable emergency plumbing repairs at any hour of the day or night. We recognize that issues like broken water lines require instant action...",
+    metaTitle: "Emergency Plumbing North Chicago | 24 Hour Plumbers",
+    metaDescription: "Urgent plumbing repair in North Chicago. Waukegan Plumbing Experts offers 24/7 service for burst pipes and leaks. Call us today!",
+    landmarks: ["Great Lakes Naval Base", "Foss Park", "Rosalind Franklin University"]
+  }
 ];
