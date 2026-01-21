@@ -3,10 +3,10 @@ import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import CityPage from './pages/CityPage';
-import ContactPage from './pages/ContactPage';
-import AreasWeServe from './pages/AreasWeServe';
-import { illinoisCities } from './cities'; // Import cities data
+import CityPage from './components/CityPage'; // Path fixed to components
+import Contact from './components/Contact'; // Path fixed to components
+import Areas from './components/Areas'; // Path fixed to components
+import { illinoisCities } from './cities';
 
 function App() {
   return (
@@ -15,10 +15,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/areas-we-serve" element={<AreasWeServe />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/areas-we-serve" element={<Areas />} />
           
-          {/* Dynamic City Routes - This ensures new plumbing slugs work */}
           {illinoisCities.map((city) => (
             <Route 
               key={city.slug} 
@@ -27,7 +26,6 @@ function App() {
             />
           ))}
 
-          {/* Fallback - If link is wrong, go to home instead of broken redirect */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />
