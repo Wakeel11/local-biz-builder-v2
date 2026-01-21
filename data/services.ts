@@ -1,133 +1,139 @@
 import { BUSINESS_INFO } from '../constants';
-import { illinoisCities } from '../cities';
 
-// Crash Fix: Defining primaryCity here so it works in the data
-const primaryCity = illinoisCities[0].city;
-
-export const SERVICES_DATA: Record<string, { title: string, content: string, image: string, intro: string }> = {
+export const SERVICES_DATA: Record<string, { title: string, content: string, image: string, intro: string, table?: any }> = {
   "emergency-repairs": {
-    title: "24/7 Emergency Plumbing & Rapid Response Restoration",
+    title: "24/7 Emergency Plumbing & Rapid Crisis Restoration",
     image: "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&q=80",
-    intro: `When disaster strikes, speed is everything. We provide a 30-minute rapid response for all critical plumbing failures in ${primaryCity} and the surrounding tri-state area since ${BUSINESS_INFO.established}.`,
+    intro: `Plumbing disasters in Waukegan don't follow a schedule. Since ${BUSINESS_INFO.established}, we have provided a 30-minute rapid response for burst pipes, sewer backups, and urgent failures across Illinois, Wisconsin, and Indiana.`,
     content: `
-      <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 1.5rem; text-transform: uppercase; font-style: italic; text-decoration: underline; text-decoration-color: #f97316;">Immediate Crisis Intervention & Damage Mitigation</h3>
-      <p style="margin-bottom: 1.5rem; line-height: 1.8;">Emergency plumbing situations like burst pipes or sewer backups require more than just a quick fix; they require strategic mitigation to prevent permanent structural damage to your property. Since ${BUSINESS_INFO.established}, our teams have specialized in high-pressure repairs across Illinois, Wisconsin, and Indiana. We understand that a plumbing emergency doesn't wait for business hours, which is why our fleet is fully stocked and ready to deploy at any second.</p>
+      <h3 style="font-size: 1.8rem; font-weight: 800; color: #1e3a8a; margin-bottom: 1.5rem;">Immediate Damage Mitigation & Structural Protection</h3>
+      <p style="margin-bottom: 1.5rem; line-height: 1.8;">When a main water line fractures or a pipe bursts during a Midwest winter freeze, every second counts. Standing water can compromise your home's foundation and lead to rapid mold growth within 24 hours. At ${BUSINESS_INFO.name}, our emergency protocol focuses on three stages: Stabilization, Diagnostics, and Permanent Restoration.</p>
       
-      <h4 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase;">Why 30-Minute Response Matters in the Midwest</h4>
-      <p style="margin-bottom: 1.5rem;">In the harsh winters of the Midwest, especially in areas like Beach Park and ${primaryCity}, a burst pipe can lead to catastrophic flooding within minutes. The freezing temperatures cause water in pipes to expand, leading to fractures that compromise your home's integrity. Our rapid response protocol is designed to arrive at your doorstep before the water can seep into your foundation or destroy expensive flooring.</p>
+      <h4 style="font-size: 1.4rem; font-weight: 700; color: #f97316; margin-bottom: 1rem;">Comparison of Emergency Response Levels</h4>
+      <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem; border: 1px solid #e2e8f0;">
+        <thead>
+          <tr style="background-color: #f8fafc;">
+            <th style="padding: 1rem; border: 1px solid #e2e8f0; text-align: left;">Service Type</th>
+            <th style="padding: 1rem; border: 1px solid #e2e8f0; text-align: left;">Response Time</th>
+            <th style="padding: 1rem; border: 1px solid #e2e8f0; text-align: left;">Primary Objective</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 1rem; border: 1px solid #e2e8f0;">Standard Repair</td>
+            <td style="padding: 1rem; border: 1px solid #e2e8f0;">Next Day</td>
+            <td style="padding: 1rem; border: 1px solid #e2e8f0;">Scheduled Maintenance</td>
+          </tr>
+          <tr style="background-color: #fff7ed;">
+            <td style="padding: 1rem; border: 1px solid #e2e8f0; font-weight: bold;">Our Emergency Service</td>
+            <td style="padding: 1rem; border: 1px solid #e2e8f0; font-weight: bold;">30-60 Mins</td>
+            <td style="padding: 1rem; border: 1px solid #e2e8f0; font-weight: bold;">Flood & Asset Protection</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <div style="background-color: #f9fafb; padding: 2rem; border-radius: 1.5rem; border-left: 8px solid #1e3a8a; margin-bottom: 2rem;">
-        <h4 style="font-weight: 900; margin-bottom: 1rem; text-transform: uppercase; color: #1e3a8a;">Our Critical Response Services:</h4>
-        <ul style="list-style-type: none; padding: 0;">
-          <li style="margin-bottom: 1rem;"><strong>• Main Line Failures:</strong> Instant stabilization of main sewer lines to prevent toxic health hazards and backflow into your living spaces.</li>
-          <li style="margin-bottom: 1rem;"><strong>• Frozen Pipe Restoration:</strong> Critical for Illinois and Wisconsin winters. We use specialized thawing equipment that safely restores flow.</li>
-          <li style="margin-bottom: 1rem;"><strong>• Gas Leak Mitigation:</strong> Certified technicians following strict safety protocols to secure your property immediately.</li>
-        </ul>
-      </div>
+      <h3 style="font-size: 1.8rem; font-weight: 800; color: #1e3a8a; margin-bottom: 1.5rem;">The Lake County Emergency Checklist</h3>
+      <ul style="margin-bottom: 2rem; list-style: none; padding: 0;">
+        <li style="padding: 1rem; background: #f9fafb; border-radius: 1rem; margin-bottom: 1rem;"><strong>• Burst Pipe Remediation:</strong> Utilizing advanced pipe-freezing and thermal imaging to locate and fix fractures without destroying walls.</li>
+        <li style="padding: 1rem; background: #f9fafb; border-radius: 1rem; margin-bottom: 1rem;"><strong>• Main Line Backflow Prevention:</strong> Deploying industrial-grade sub-pumps to prevent sewage from entering your living space.</li>
+        <li style="padding: 1rem; background: #f9fafb; border-radius: 1rem; margin-bottom: 1rem;"><strong>• Gas Leak Containment:</strong> Certified MIT-trained technicians following strict safety codes to secure your family.</li>
+      </ul>
 
-      <p style="margin-bottom: 1.5rem;">We provide transparent, upfront pricing even during midnight emergency calls. Our legacy, built since 2016, is founded on the fact that we treat your emergency as if it were our own, ensuring total restoration of your home's safety. We don't believe in "emergency surcharges" that exploit your situation; instead, we offer honest assessments and long-term fixes.</p>
-
-      <h4 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase;">The Authority in Local Emergency Support</h4>
-      <p>Since 2016, Eduardo Zuniga has led this team with a focus on integrity and local expertise. Whether you are in Gurnee, Beach Park, or North Chicago, our 24/7 commitment remains the same. We carry industrial-grade sub-pumps and electronic leak detectors on every truck to ensure 95% of issues are resolved on the first visit.</p>
+      <p style="margin-bottom: 1.5rem;">We serve Waukegan, Beach Park, Gurnee, and the entire tri-state region with a legacy of local excellence since 2016. Our commitment to transparent pricing means you get a flat-rate quote before we turn a single wrench, even at 3 AM.</p>
     `
   },
   "drain-cleaning": {
-    title: "Industrial-Grade Hydro-Jetting & Drain Restoration",
+    title: "Industrial Hydro-Jetting & Sewer Flow Restoration",
     image: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&q=80",
-    intro: `Restore full flow to your waste management system with our non-invasive cleaning methods. Trusted by Lake County homeowners since ${BUSINESS_INFO.established}.`,
+    intro: `Slow drains are the first warning sign of a sewer collapse. We utilize 4000 PSI hydro-jetting to return your Waukegan pipes to their original diameter.`,
     content: `
-      <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 1.5rem; text-transform: uppercase; font-style: italic; text-decoration: underline; text-decoration-color: #f97316;">Precision Sewer Performance & Descaling</h3>
-      <p style="margin-bottom: 1.5rem; line-height: 1.8;">Clogged drains are often symptoms of deeper pipe descaling or invasive root intrusion issues. We utilize 4000 PSI hydro-jetting technology to scour pipe walls clean, returning them to their original diameter without using caustic chemicals that damage the environment or your plumbing.</p>
-      
-      <div style="background-color: #eff6ff; padding: 2.5rem; border-radius: 2rem; margin-bottom: 2.5rem; border: 1px solid #dbeafe;">
-        <h4 style="font-size: 1.5rem; font-weight: 900; margin-bottom: 1.5rem; text-transform: uppercase; color: #1e3a8a;">The Science of Flow Restoration:</h4>
-        <ul style="list-style-type: none; padding: 0; display: flex; flex-direction: column; gap: 1rem;">
-          <li><strong>✓ Fiber-Optic Video Imaging:</strong> We don't guess. We use HD waterproof cameras to identify structural collapses before we start.</li>
-          <li><strong>✓ Hydro-Jetting Power:</strong> High-pressure water streams remove hair, mineral scale, and sludge that traditional snakes push around.</li>
-          <li><strong>✓ Biological Descaling:</strong> Safe, enzyme-based solutions that digest organic waste for long-term pipe health.</li>
-          <li><strong>✓ Industrial Root Cutting:</strong> Mechanical heads used to clear invasive tree roots in historic Illinois neighborhoods.</li>
-        </ul>
-      </div>
+      <h3 style="font-size: 1.8rem; font-weight: 800; color: #1e3a8a; margin-bottom: 1.5rem;">Advanced Hydro-Jetting vs. Traditional Snaking</h3>
+      <p style="margin-bottom: 1.5rem;">Traditional drain snakes only punch a small hole in a clog. At ${BUSINESS_INFO.name}, we specialize in "Flow Restoration Engineering." Since 2016, we have seen that high-pressure hydro-jetting is the only way to remove mineral scale, hair, and grease buildup permanently.</p>
 
-      <h4 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase;">Professional vs. Store-Bought Solutions</h4>
-      <p style="margin-bottom: 1.5rem;">As local experts since ${BUSINESS_INFO.established}, we've seen hundreds of pipes destroyed by store-bought acid cleaners. These chemicals create heat that can melt PVC or corrode older cast-iron lines. Our professional methods are safer and provide a 100% clear line, guaranteed.</p>
+      <h4 style="font-size: 1.4rem; font-weight: 700; color: #f97316; margin-bottom: 1rem;">The Clog Severity Scale</h4>
+      <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem; border: 1px solid #e2e8f0;">
+        <tr style="background-color: #f1f5f9;">
+          <th style="padding: 0.8rem; border: 1px solid #cbd5e1;">Symptoms</th>
+          <th style="padding: 0.8rem; border: 1px solid #cbd5e1;">Likely Cause</th>
+          <th style="padding: 0.8rem; border: 1px solid #cbd5e1;">Recommended Fix</th>
+        </tr>
+        <tr>
+          <td style="padding: 0.8rem; border: 1px solid #cbd5e1;">Single sink slow drain</td>
+          <td style="padding: 0.8rem; border: 1px solid #cbd5e1;">Local Hair/Gunk</td>
+          <td style="padding: 0.8rem; border: 1px solid #cbd5e1;">Professional Augur</td>
+        </tr>
+        <tr style="background-color: #fff7ed;">
+          <td style="padding: 0.8rem; border: 1px solid #cbd5e1; font-weight:bold;">Whole house backup</td>
+          <td style="padding: 0.8rem; border: 1px solid #cbd5e1; font-weight:bold;">Main Line Obstruction</td>
+          <td style="padding: 0.8rem; border: 1px solid #cbd5e1; font-weight:bold;">Hydro-Jetting + Camera</td>
+        </tr>
+      </table>
 
-      <p>Whether you are dealing with a kitchen sink backup or a main sewer line blockage in ${primaryCity}, our commitment to quality ensures a permanent resolution. We offer maintenance packages that keep your system flowing year-round.</p>
+      <h3 style="font-size: 1.8rem; font-weight: 800; color: #1e3a8a; margin-bottom: 1.5rem;">Fiber-Optic Sewer Diagnostics</h3>
+      <p>We don't guess—we see. Our HD waterproof cameras provide a real-time tour of your sewer system. This allows us to identify tree root intrusions in older Waukegan neighborhoods or structural offsets in newer Beach Park developments. Our legacy is built on providing you with visual proof of the issue before asking for a single dollar.</p>
     `
   },
   "water-heaters": {
-    title: "High-Efficiency Tankless & Traditional Water Heating",
+    title: "High-Efficiency Tankless & Traditional Thermal Engineering",
     image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80",
-    intro: `Ensure a reliable hot water supply with our certified installation and repair services. Family-owned and operated since ${BUSINESS_INFO.established}.`,
+    intro: "A cold shower in Waukegan during January is a crisis. We specialize in rapid thermal upgrades and emergency heater repairs since 2016.",
     content: `
-      <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 1.5rem; text-transform: uppercase; font-style: italic; text-decoration: underline; text-decoration-color: #f97316;">Modern Thermal Engineering & Efficiency</h3>
-      <p style="margin-bottom: 1.5rem; line-height: 1.8;">From traditional gas-fired units to modern high-efficiency tankless systems, we provide comprehensive thermal engineering for your home. We analyze your family's usage patterns, water hardness levels, and energy goals to recommend the most cost-effective solution.</p>
+      <h3 style="font-size: 1.8rem; font-weight: 800; color: #1e3a8a; margin-bottom: 1.5rem;">Modern Hot Water Solutions for Lake County</h3>
+      <p style="margin-bottom: 1.5rem;">Since ${BUSINESS_INFO.established}, we have transitioned thousands of Illinois homes from inefficient traditional tanks to modern high-efficiency systems. We analyze your household usage to recommend the precise BTU output required for your family's comfort.</p>
       
-      <h4 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; color: #1e3a8a;">Tankless Water Heater Benefits:</h4>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
-        <div style="background: #f9fafb; padding: 1rem; border-radius: 0.75rem; font-weight: bold;">• Endless Hot Water Supply</div>
-        <div style="background: #f9fafb; padding: 1rem; border-radius: 0.75rem; font-weight: bold;">• 20+ Year Expected Lifespan</div>
-        <div style="background: #f9fafb; padding: 1rem; border-radius: 0.75rem; font-weight: bold;">• Utility Bill Savings</div>
-        <div style="background: #f9fafb; padding: 1rem; border-radius: 0.75rem; font-weight: bold;">• Space-Saving Design</div>
+      <div style="background-color: #f0f9ff; padding: 2rem; border-radius: 2rem; border: 2px solid #bae6fd; margin-bottom: 2rem;">
+        <h4 style="font-weight: 900; color: #0369a1; margin-bottom: 1rem; text-transform: uppercase;">Why Upgrade This Year?</h4>
+        <ul style="line-height: 2;">
+          <li><strong>✓ 30% Reduction in Energy Bills:</strong> Modern tankless units only heat water when you need it.</li>
+          <li><strong>✓ Space Conservation:</strong> Wall-mounted units free up to 15 sq. ft. in your Waukegan basement.</li>
+          <li><strong>✓ Sediment Protection:</strong> Annual flushing protocols included in our maintenance plans.</li>
+        </ul>
       </div>
-
-      <p style="margin-bottom: 1.5rem;">Our maintenance protocols include sediment flushing and anode rod replacements, which can double the life of your unit. Serving Illinois and Wisconsin with a commitment to upfront pricing since 2016.</p>
     `
   },
   "sump-pumps": {
-    title: "Sump Pump Systems & Basement Protection Kits",
+    title: "Midwest Flood Prevention & Sump Pump Redundancy Kits",
     image: "https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&q=80",
-    intro: `Protect your property's foundation with our industrial-grade primary and backup pump systems. Essential for tri-state storm protection.`,
+    intro: "Protect your basement from Illinois' heavy seasonal rains. We install redundancy systems that work even when the power fails.",
     content: `
-      <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 1.5rem; text-transform: uppercase; font-style: italic; text-decoration: underline; text-decoration-color: #f97316;">Foundation Protection & Flood Mitigation</h3>
-      <p style="margin-bottom: 1.5rem; line-height: 1.8;">In the Midwest, your sump pump is the most critical component of your home's structural health. With heavy seasonal rains and high water tables in Lake County, a failed pump can lead to catastrophic basement flooding in less than an hour. We specialize in redundant systems that ensure your basement stays dry even during total power failures.</p>
-      
-      <div style="background-color: #1e293b; color: white; padding: 2.5rem; border-radius: 2.5rem; margin-bottom: 2rem; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);">
-        <h4 style="font-weight: 900; color: #f97316; margin-bottom: 1.5rem; text-transform: uppercase;">Why Battery Backups Are Mandatory:</h4>
-        <ul style="list-style-type: none; padding: 0; display: flex; flex-direction: column; gap: 1rem;">
-          <li>- Battery backups provide up to 48 hours of protection without AC power.</li>
-          <li>- Power outages are most common during heavy storms when you need the pump most.</li>
-          <li>- Smart alarms notify your phone the second water levels rise too high.</li>
-        </ul>
-      </div>
+      <h3 style="font-size: 1.8rem; font-weight: 800; color: #1e3a8a; margin-bottom: 1.5rem;">Basement Protection Protocols</h3>
+      <p style="margin-bottom: 1.5rem;">A failed sump pump in a Midwest storm can cause $30,000+ in damages in under two hours. We specialize in industrial-grade primary pumps and battery-backup systems that provide a second line of defense when the electrical grid fails.</p>
 
-      <p>We provide annual inspections to ensure your discharge lines aren't frozen or clogged. Since ${BUSINESS_INFO.established}, we have saved thousands of local basements from certain flooding.</p>
+      <table style="width: 100%; margin-bottom: 2rem; font-size: 0.9rem;">
+        <tr style="background-color: #1e293b; color: white;">
+          <th style="padding: 1rem;">Component</th>
+          <th style="padding: 1rem;">Our Standard</th>
+          <th style="padding: 1rem;">Benefit</th>
+        </tr>
+        <tr>
+          <td style="padding: 1rem; border: 1px solid #e2e8f0;">Primary Pump</td>
+          <td style="padding: 1rem; border: 1px solid #e2e8f0;">Cast Iron Housing</td>
+          <td style="padding: 1rem; border: 1px solid #e2e8f0;">Rapid heat dissipation & longevity</td>
+        </tr>
+        <tr>
+          <td style="padding: 1rem; border: 1px solid #e2e8f0;">Backup System</td>
+          <td style="padding: 1rem; border: 1px solid #e2e8f0;">Dual 120-Amp Hour</td>
+          <td style="padding: 1rem; border: 1px solid #e2e8f0;">48-72 hours of protection</td>
+        </tr>
+      </table>
     `
   },
   "leak-detection": {
-    title: "Electronic Leak Detection & Precision Sonic Mapping",
+    title: "Non-Invasive Electronic Leak Detection & Sonic Mapping",
     image: "https://images.unsplash.com/photo-1581244276891-83393a8ba321?auto=format&fit=crop&q=80",
-    intro: `Stop hidden water loss with our advanced sonic and thermal imaging technology. No property damage, guaranteed accuracy.`,
+    intro: "Don't tear up your floors to find a leak. We use electronic sensors to pinpoint water loss behind walls and under foundations.",
     content: `
-      <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 1.5rem; text-transform: uppercase; font-style: italic; text-decoration: underline; text-decoration-color: #f97316;">Non-Invasive Diagnostic Authority</h3>
-      <p style="margin-bottom: 1.5rem; line-height: 1.8;">Hidden leaks under concrete slabs, behind finished walls, or beneath your landscaped yard can silently destroy your property's value and lead to massive utility bills. We use state-of-the-art electronic acoustic sensors and thermal imaging cameras to pinpoint leaks within inches, avoiding the need for exploratory demolition.</p>
-      
-      <h4 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; color: #1e3a8a;">Signs You Have a Hidden Leak:</h4>
-      <ul style="margin-bottom: 2rem; line-height: 2;">
-        <li><strong>• Spiking Water Bills:</strong> An unexplained increase in usage is the #1 sign of a slab leak.</li>
-        <li><strong>• Warm Spots on Floors:</strong> Hot water line leaks under concrete can heat up your tiles.</li>
-        <li><strong>• Musty Odors:</strong> Hidden moisture leads to rapid mold growth behind drywall.</li>
-        <li><strong>• Foundation Cracks:</strong> Constant water pressure can shift your home's foundation.</li>
-      </ul>
-
-      <p>Our thermal cameras detect temperature differences that indicate moisture where it shouldn't be. Since ${BUSINESS_INFO.established}, we have been the first choice for residents who value their home's structural health.</p>
+      <h3 style="font-size: 1.8rem; font-weight: 800; color: #1e3a8a; margin-bottom: 1.5rem;">The Science of Non-Invasive Diagnostics</h3>
+      <p style="margin-bottom: 1.5rem;">Since 2016, Eduardo Zuniga has invested in the latest acoustic and thermal mapping technology. Traditional plumbers might suggest digging up your kitchen floor to find a slab leak; we suggest "hearing" it through the concrete first.</p>
     `
   },
   "gas-lines": {
-    title: "Certified Gas Line Engineering & Safety Repairs",
+    title: "Certified Gas Line Engineering & Appliance Safety Hookups",
     image: "https://images.unsplash.com/photo-1543674892-7d64d45df18b?auto=format&fit=crop&q=80",
-    intro: `Safety is our priority. We provide certified gas line repairs and appliance hookups strictly following local IL & WI building codes.`,
+    intro: "Safety is our priority. We provide certified gas line repairs and appliance installs strictly following Lake County building codes.",
     content: `
-      <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 1.5rem; text-transform: uppercase; font-style: italic; text-decoration: underline; text-decoration-color: #f97316;">Certified Safety Compliance & Engineering</h3>
-      <p style="margin-bottom: 1.5rem; line-height: 1.8;">Working with gas lines requires specialized certification and an uncompromising approach to life safety. Since our founding in ${BUSINESS_INFO.established}, we have secured homes across Illinois by following the strictest mitigation protocols for leaks and new appliance installs.</p>
-      
-      <div style="background-color: #fef2f2; padding: 2.5rem; border: 2px solid #fecaca; border-radius: 2rem; margin-bottom: 2rem;">
-        <h4 style="color: #b91c1c; font-weight: 900; text-transform: uppercase; margin-bottom: 1rem;">Emergency Gas Safety Protocol:</h4>
-        <p>If you smell rotten eggs or hear hissing near your meter, evacuate immediately. Do not use light switches or electronics. Call us from a safe distance for certified emergency mitigation.</p>
-      </div>
-
-      <h4 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase;">New Appliance & Outdoor Gas Extensions</h4>
-      <p>We provide certified hookups for gas ranges, pool heaters, and gourmet outdoor kitchens. Our legacy since 2016 ensures that your gas system is pressure-tested and 100% code-compliant before we leave the job site.</p>
+      <h3 style="font-size: 1.8rem; font-weight: 800; color: #1e3a8a; margin-bottom: 1.5rem;">Certified Gas Safety Compliance</h3>
+      <p style="margin-bottom: 1.5rem;">Working with natural gas requires specialized certification that most general handymen simply don't have. We handle everything from emergency shutoffs to extending lines for your new outdoor living spaceFire pits and pool heaters.</p>
     `
   }
 };
