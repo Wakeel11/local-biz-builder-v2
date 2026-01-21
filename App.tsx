@@ -3,9 +3,9 @@ import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import CityPage from './components/CityPage'; // Path fixed to components
-import Contact from './components/Contact'; // Path fixed to components
-import Areas from './components/Areas'; // Path fixed to components
+import CityPage from './components/CityPage'; // Path changed from pages to components
+import Contact from './components/Contact'; 
+import Areas from './components/Areas'; 
 import { illinoisCities } from './cities';
 
 function App() {
