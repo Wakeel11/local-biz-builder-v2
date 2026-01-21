@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Phone, Hammer, ChevronDown, Star, ShieldCheck } from 'lucide-react';
+// Added 'Clock' to the imports below to fix the white screen error
+import { Menu, X, Phone, Hammer, ChevronDown, Star, ShieldCheck, Clock } from 'lucide-react'; 
 import { BUSINESS_INFO } from '../constants';
 
 const Header: React.FC = () => {
@@ -42,7 +43,7 @@ const Header: React.FC = () => {
             </div>
           </Link>
 
-          {/* Desktop Links - Spacing Fixed */}
+          {/* Desktop Links */}
           <nav className="hidden lg:flex items-center gap-10">
             {['Home', 'Areas We Serve', 'Contact'].map((item) => (
               <Link key={item} to={item === 'Home' ? '/' : `/${item.toLowerCase().replace(/ /g, '-')}`} 
@@ -52,7 +53,7 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          {/* THE BIG GREEN CALL BUTTON (Priority CTA) */}
+          {/* THE BIG GREEN CALL BUTTON - Priority CTA */}
           <div className="hidden lg:flex items-center">
             <a href={`tel:${BUSINESS_INFO.phone}`} 
               className="bg-[#22c55e] hover:bg-green-600 text-white px-8 py-4 rounded-2xl font-black transition-all shadow-xl hover:shadow-2xl uppercase text-xs tracking-widest flex items-center gap-3 transform hover:scale-105">
