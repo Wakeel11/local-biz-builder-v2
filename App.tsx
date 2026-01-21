@@ -1,8 +1,9 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Header from './components/Header'; // Changed from Navbar to Header to match your folder
+import Header from './components/Header'; 
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import ServicePage from './pages/ServicePage'; // NEW IMPORT
 import CityPage from './components/CityPage'; 
 import Contact from './components/Contact'; 
 import Areas from './components/Areas'; 
@@ -17,9 +18,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/areas-we-serve" element={<Areas />} />
+          
+          {/* YEAH LINE MISSING THI - Ab Service Pages load honge */}
+          <Route path="/services/:slug" element={<ServicePage />} />
+          
           {illinoisCities.map((city) => (
             <Route key={city.slug} path={`/${city.slug}`} element={<CityPage cityData={city} />} />
           ))}
+          
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />
@@ -27,4 +33,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;
