@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, ShieldCheck, Clock, Award, CheckCircle, ArrowRight, Star, MapPin, ThumbsUp } from 'lucide-react';
+import { Phone, ShieldCheck, Clock, Award, CheckCircle, Star, Quote, ThumbsUp } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants';
 import { illinoisCities } from '../cities';
 
@@ -9,114 +9,116 @@ const Home = () => {
 
   return (
     <div className="pt-16">
-      {/* GLOBAL CTA STRIP (Code 2) - Below Menu */}
-      <div className="bg-[#22c55e] py-3 border-b border-green-600 shadow-inner">
-        <div className="container mx-auto px-4 flex justify-center">
-          <a 
-            href={`//leads.leadsmartinc.com/?api_key=eccf555586cda416df8b89f66df641fee9a1bcb8&affiliate_source=modazawra1&category=${nicheCategory}&funnel=3&buttons=btn-success&step=1`} 
-            className="polyares-quote-button text-white px-6 py-1 rounded-full font-black uppercase text-sm hover:scale-105 transition-all flex items-center gap-2"
-          >
-            <Star size={16} fill="white" /> Get a Free Estimate — Limited Time Offer!
-          </a>
-        </div>
-      </div>
-
-      {/* 1. VIP HERO SECTION WITH LEAD BOX (Code 1) */}
-      <section className="bg-[#1e3a8a] text-white py-20 px-4 relative overflow-hidden min-h-[600px] flex items-center">
-        {/* Background Image Overlay */}
-        <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1635350736475-c8cef4b21906?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
+      {/* 1. VIP HERO SECTION WITH LEADSMART FORM */}
+      <section className="relative bg-[#1e3a8a] text-white py-24 px-4 overflow-hidden flex items-center min-h-[650px]">
+        <div className="absolute inset-0 opacity-25 bg-[url('https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
         
-        <div className="container mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="text-left">
-            <h1 className="text-4xl md:text-6xl font-black uppercase mb-6 leading-tight tracking-tight">
-              24/7 EMERGENCY {BUSINESS_INFO.name.split(' ')[1]} SERVICES IN {primaryCity.toUpperCase()}, IL
+            <h1 className="text-5xl md:text-7xl font-black uppercase mb-6 leading-[1.1] tracking-tighter">
+              24/7 EMERGENCY {BUSINESS_INFO.name.split(' ')[1]} IN {primaryCity.toUpperCase()}, IL
             </h1>
-            <p className="text-xl mb-8 opacity-90 leading-relaxed font-medium">
-              Trusted by homeowners across {BUSINESS_INFO.serviceArea} since {BUSINESS_INFO.established}. 
-              Fast response, transparent pricing, and professional results guaranteed.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <a href={`tel:${BUSINESS_INFO.phone.replace(/\D/g,'')}`} className="bg-[#22c55e] text-white text-2xl font-bold px-8 py-4 rounded-xl flex items-center gap-3 shadow-xl hover:scale-105 transition-transform">
-                <Phone size={28} /> CALL {BUSINESS_INFO.phone}
-              </a>
-            </div>
-          </div>
-
-          {/* MASTER QUOTE BOX (Code 1 Integration) */}
-          <div className="bg-white p-8 rounded-3xl shadow-2xl border-t-8 border-[#f97316] text-gray-800">
-            <h3 className="text-2xl font-black uppercase mb-4 text-[#1e3a8a] text-center">Request Free Quotes</h3>
-            <div 
-              className="po-request-quotes-box" 
-              data-buttons="btn-success" 
-              data-category={nicheCategory} 
-              data-affiliate_source="modazawra1"
-            ></div>
-            <p className="text-[10px] text-gray-400 mt-4 text-center">Fast, Local & Secure Service Quotes</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. EEAT TRUST BAR */}
-      <div className="bg-gray-100 py-8 border-b border-gray-200">
-        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-[#1e3a8a] font-black uppercase text-center text-xs tracking-widest">
-          <div className="flex flex-col items-center gap-2"><ShieldCheck className="text-[#f97316]" size={32} /> Licensed & Insured</div>
-          <div className="flex flex-col items-center gap-2"><Clock className="text-[#f97316]" size={32} /> 24/7 Rapid Response</div>
-          <div className="flex flex-col items-center gap-2"><Star className="text-[#f97316]" size={32} /> Top Rated Service</div>
-          <div className="flex flex-col items-center gap-2"><Award className="text-[#f97316]" size={32} /> Locally Owned</div>
-        </div>
-      </div>
-
-      {/* 3. EXPERT SOLUTIONS (Expanded Content) */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-4xl font-black text-[#1e3a8a] mb-6 uppercase">Professional Local Expertise Since {BUSINESS_INFO.established}</h2>
-            <div className="text-gray-600 text-lg leading-loose space-y-4 mb-8">
-              <p>
-                At {BUSINESS_INFO.name}, we understand that emergencies don't wait for business hours. Since {BUSINESS_INFO.established}, we have been the go-to specialists for rapid response and high-quality repairs across the {BUSINESS_INFO.serviceArea} region. 
-              </p>
-              <p>
-                Whether you are facing an urgent failure in {primaryCity} or need preventative maintenance to safeguard your property, our factory-certified technicians bring years of hands-on experience to every project. We pride ourselves on transparent communication and upfront pricing.
-              </p>
-            </div>
-            <ul className="grid grid-cols-1 gap-4">
-              {['Certified Professional Technicians', 'Upfront Transparent Pricing', 'Modern Specialized Equipment', 'Satisfaction Guaranteed'].map(item => (
-                <li key={item} className="flex items-center gap-3 font-bold text-gray-800 uppercase text-sm">
-                  <CheckCircle className="text-[#f97316]" size={20} /> {item}
+            <ul className="space-y-4 mb-10">
+              {['Fast 30-Minute Local Response', 'Licensed, Bonded & Insured Pros', 'Upfront Pricing - No Hidden Fees'].map(point => (
+                <li key={point} className="flex items-center gap-4 text-xl font-bold uppercase tracking-tight">
+                  <CheckCircle className="text-[#22c55e]" size={28} /> {point}
                 </li>
               ))}
             </ul>
+            <a href={`tel:${BUSINESS_INFO.phone}`} className="inline-flex items-center gap-4 bg-[#22c55e] text-white text-3xl font-black px-12 py-6 rounded-2xl shadow-2xl hover:scale-105 transition-transform">
+              <Phone size={36} /> CALL {BUSINESS_INFO.phone}
+            </a>
           </div>
-          <div className="bg-gray-200 rounded-3xl h-[450px] overflow-hidden relative shadow-inner">
-             <iframe 
-                width="100%" height="100%" frameBorder="0" scrolling="no" 
-                src={`https://maps.google.com/maps?q=${primaryCity},IL&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-                className="grayscale contrast-125"
-             ></iframe>
+
+          {/* MASTER QUOTE BOX (Fixed Code 1) */}
+          <div className="bg-white p-10 rounded-[40px] shadow-[0_20px_50px_rgba(0,0,0,0.3)] border-t-[10px] border-[#f97316] text-gray-800">
+            <h3 className="text-3xl font-black uppercase mb-2 text-[#1e3a8a] text-center">Request Free Quotes</h3>
+            <p className="text-center text-gray-500 mb-6 font-bold uppercase text-xs tracking-widest">Fast, Local & Secure Service Quotes</p>
+            {/* LeadSmart Widget Container */}
+            <div 
+              className="po-request-quotes-box" 
+              data-buttons="btn-success" 
+              data-category={nicheCategory}
+              data-affiliate_source="modazawra1"
+            ></div>
           </div>
         </div>
       </section>
 
-      {/* 4. SERVICE LOCATIONS */}
-      <section className="py-20 bg-gray-50">
+      {/* 2. EEAT TRUST SECTION (Authority Builder) */}
+      <section className="py-20 bg-white border-b border-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            {[
+              { icon: ShieldCheck, title: "Fully Insured", desc: "Licensed & Bonded Pros" },
+              { icon: Star, title: "5-Star Rated", desc: "Top Local Reviews" },
+              { icon: Clock, title: "24/7 Response", desc: "Always Available" },
+              { icon: ThumbsUp, title: "Satisfaction", desc: "Guaranteed Results" }
+            ].map((item, idx) => (
+              <div key={idx} className="flex flex-col items-center group">
+                <div className="bg-gray-50 p-6 rounded-3xl mb-4 group-hover:bg-[#1e3a8a] transition-colors">
+                  <item.icon size={48} className="text-[#f97316] group-hover:text-white transition-colors" />
+                </div>
+                <h4 className="font-black uppercase text-[#1e3a8a] text-lg">{item.title}</h4>
+                <p className="text-gray-500 font-bold text-xs uppercase tracking-widest">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. EXPERT SOLUTIONS (150+ Words SEO Content) */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-black text-[#1e3a8a] mb-8 uppercase leading-tight italic">
+                Local Expertise You Can Trust Since {BUSINESS_INFO.established}
+              </h2>
+              <div className="text-gray-700 text-lg leading-relaxed space-y-6 mb-10">
+                <p>
+                  At {BUSINESS_INFO.name}, we understand that {nicheCategory} emergencies don't wait for business hours. Since {BUSINESS_INFO.established}, our family-owned business has been dedicated to providing the residents of {primaryCity} with high-quality, reliable solutions. Our certified technicians are strategically located across Illinois, Wisconsin, and Indiana to ensure that when a crisis strikes, we are at your door in record time.
+                </p>
+                <p>
+                  Whether you are dealing with a sudden failure or looking for expert preventative maintenance, we utilize modern specialized equipment to deliver lasting results. We take pride in our transparent pricing model—no surprises, no hidden fees, just honest work.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-bold text-gray-800 uppercase text-sm">
+                <span className="flex items-center gap-2"><CheckCircle className="text-[#f97316]" /> Certified Technicians</span>
+                <span className="flex items-center gap-2"><CheckCircle className="text-[#f97316]" /> Transparent Pricing</span>
+                <span className="flex items-center gap-2"><CheckCircle className="text-[#f97316]" /> 24/7 Emergency Help</span>
+                <span className="flex items-center gap-2"><CheckCircle className="text-[#f97316]" /> Licensed & Insured</span>
+              </div>
+            </div>
+            <div className="relative rounded-[40px] overflow-hidden shadow-2xl h-[500px]">
+               <iframe 
+                width="100%" height="100%" frameBorder="0" scrolling="no" 
+                src={`https://maps.google.com/maps?q=${primaryCity},IL&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                className="grayscale contrast-125"
+               ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. KEYWORD-RICH TESTIMONIALS */}
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-black mb-4 uppercase text-[#1e3a8a]">Areas We Serve</h2>
-          <p className="text-gray-600 mb-12 max-w-2xl mx-auto font-medium">
-            Local expert service available 24 hours a day in the following Illinois and Wisconsin communities.
-          </p>
+          <h2 className="text-4xl font-black uppercase text-[#1e3a8a] mb-16">Trusted By Your Neighbors</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {illinoisCities.map((city) => (
-              <a 
-                key={city.slug} 
-                href={`/#/${city.slug}`} 
-                className="group bg-white p-8 rounded-2xl shadow-md border-b-8 border-transparent hover:border-[#f97316] transition-all text-left"
-              >
-                <h3 className="text-2xl font-black text-[#1e3a8a] mb-2 uppercase group-hover:text-[#f97316] transition-colors">{city.city}</h3>
-                <p className="text-gray-500 mb-4 text-sm line-clamp-2">{city.meta_description}</p>
-                <span className="flex items-center gap-2 font-bold text-[#f97316] uppercase text-xs tracking-widest">
-                  View Local Services <ArrowRight size={14} />
-                </span>
-              </a>
+            {[
+              { name: "John D.", city: primaryCity, text: `The best emergency ${nicheCategory} service in ${primaryCity}! They arrived in 20 minutes and fixed the issue perfectly.` },
+              { name: "Sarah M.", city: "Gurnee", text: `Highly recommend! Professional team, upfront pricing, and they really know their ${nicheCategory} stuff.` },
+              { name: "Mike R.", city: "North Chicago", text: `I was stressed about my pipe failure, but they handled it with ease. Excellent local pros.` }
+            ].map((rev, i) => (
+              <div key={i} className="bg-gray-50 p-10 rounded-[32px] text-left border-b-8 border-[#f97316] relative">
+                <Quote className="absolute top-6 right-6 text-gray-200" size={40} />
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="#f97316]" className="text-[#f97316]" />)}
+                </div>
+                <p className="text-gray-700 font-medium mb-6 italic">"{rev.text}"</p>
+                <div className="font-black text-[#1e3a8a] uppercase text-sm">{rev.name} — {rev.city}, IL</div>
+              </div>
             ))}
           </div>
         </div>
