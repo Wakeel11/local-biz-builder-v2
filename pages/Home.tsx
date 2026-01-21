@@ -1,46 +1,51 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Hero from '../components/Hero';
+import Services from '../components/Services';
+import Trust from '../components/Trust';
+import Areas from '../components/Areas';
+import { BUSINESS_INFO } from '../constants';
 import { illinoisCities } from '../cities';
-import { BUSINESS_INFO } from '../constants'; // Import constants
-import { Phone, Star, ShieldCheck, CheckCircle } from 'lucide-react';
 
 const Home = () => {
   return (
-    <div className="pt-20">
-      {/* Dynamic Hero Section */}
-      <section className="bg-[#1e3a8a] text-white py-20 px-4 text-center">
-        <div className="container mx-auto">
-          <h1 className="text-4xl md:text-6xl font-black uppercase mb-6 tracking-tight">
-            {BUSINESS_INFO.name}: LOCAL EXPERTS IN {illinoisCities[0].city}, IL
-          </h1>
-          <a href={`tel:${BUSINESS_INFO.phone.replace(/\D/g,'')}`} className="inline-flex items-center gap-3 bg-[#22c55e] hover:bg-green-600 text-white text-2xl font-bold px-8 py-4 rounded-xl shadow-lg transition-transform hover:scale-105">
-            <Phone /> CALL {BUSINESS_INFO.phone}
-          </a>
-          <p className="mt-8 text-xl opacity-90 max-w-2xl mx-auto">
-            {BUSINESS_INFO.name} is a trusted local company proudly serving {illinoisCities[0].city} and surrounding areas since {BUSINESS_INFO.established}.
-          </p>
+    <main>
+      {/* 1. Hero Section (Dynamic from constants & cities) */}
+      <Hero />
+
+      {/* 2. Trust/Badges Section (Shows 2016 Legacy) */}
+      <section className="py-10 bg-gray-50 border-y border-gray-200">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16 items-center opacity-70 grayscale hover:grayscale-0 transition-all">
+             <div className="text-center">
+                <span className="block text-2xl font-black text-[#1e3a8a]">EST. {BUSINESS_INFO.established}</span>
+                <span className="text-xs uppercase font-bold text-gray-500">Local Authority</span>
+             </div>
+             {/* Yahan aap apne badges/icons add kar sakte hain */}
+          </div>
         </div>
       </section>
 
-      {/* Areas We Serve Section (Links Fix) */}
-      <section className="py-20 bg-gray-50">
+      {/* 3. Services Grid (Dynamic from Constants) */}
+      <Services />
+
+      {/* 4. Why Trust Us (Using Business Info) */}
+      <Trust />
+
+      {/* 5. Areas We Serve (Automatic Links for SEO) */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-black mb-12 uppercase text-[#1e3a8a]">Areas We Serve</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="text-4xl font-black mb-4 uppercase text-[#1e3a8a]">Areas We Serve</h2>
+          <p className="text-gray-600 mb-12 font-medium max-w-2xl mx-auto">
+            Providing expert emergency services across {BUSINESS_INFO.serviceArea}.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {illinoisCities.map((city) => (
-              <Link 
-                key={city.slug} 
-                to={`/${city.slug}`} // Correct pathing for router
-                className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all border-b-4 border-[#f97316]"
-              >
-                <h3 className="text-2xl font-bold mb-2 uppercase">{city.city}</h3>
-                <p className="text-gray-600 font-medium">Professional Emergency Services</p>
-              </Link>
+              <Areas key={city.slug} city={city} />
             ))}
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 };
 
