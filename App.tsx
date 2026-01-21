@@ -1,42 +1,39 @@
 import React from 'react';
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Layout from './components/Layout';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
-import CityServicePage from './pages/CityServicePage';
-import RoofService from './pages/RoofService'; 
-import Gutters from './pages/Gutters'; 
+import CityPage from './pages/CityPage';
 import ContactPage from './pages/ContactPage';
 import AreasWeServe from './pages/AreasWeServe';
+import { illinoisCities } from './cities'; // Import cities data
 
-const App = () => {
+function App() {
   return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+    <Router>
+      <div className="min-h-screen bg-white">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/areas-we-serve" element={<AreasWeServe />} />
           
-          {/* Static Service Pages */}
-          <Route path="roofing-installation" element={<RoofService serviceType="installation" />} />
-          <Route path="roofing-repair" element={<RoofService serviceType="repair" />} />
-          <Route path="roofing-inspection" element={<RoofService serviceType="inspection" />} />
-          <Route path="roofing-cleaning" element={<RoofService serviceType="cleaning" />} />
-          <Route path="roofing-replacement" element={<RoofService serviceType="replacement" />} />
-          
-          <Route path="gutter-services" element={<Gutters />} />
-          <Route path="areas-we-serve" element={<AreasWeServe />} />
-          <Route path="contact" element={<ContactPage />} />
-          
-          {/* SLASH FIX: Ise change kiya hai taake /roofing/city-name match ho */}
-          <Route path="roofing/:citySlug" element={<CityServicePage />} />
-          
-          {/* Catch-all for any other dynamic slug */}
-          <Route path=":slug" element={<CityServicePage />} />
+          {/* Dynamic City Routes - This ensures new plumbing slugs work */}
+          {illinoisCities.map((city) => (
+            <Route 
+              key={city.slug} 
+              path={`/${city.slug}`} 
+              element={<CityPage cityData={city} />} 
+            />
+          ))}
 
-          <Route path="services" element={<Navigate to="/roofing-repair" replace />} />
-        </Route>
-      </Routes>
-    </HashRouter>
+          {/* Fallback - If link is wrong, go to home instead of broken redirect */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
-};
+}
 
 export default App;
