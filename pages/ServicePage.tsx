@@ -62,11 +62,15 @@ const ServicePage = () => {
       </section>
 
       {/* 3. MASSIVE SEO CONTENT (Table, Lists, Detailed Text) */}
-      <section className="py-24 bg-gray-50 border-b border-gray-100">
-        <div className="container mx-auto px-4 max-w-4xl shadow-sm bg-white p-12 md:p-20 rounded-[40px]">
-          <article className="prose prose-2xl max-w-none text-gray-800 leading-relaxed font-serif" dangerouslySetInnerHTML={{ __html: service.content }} />
-        </div>
-      </section>
+      {/* 3. MASSIVE SEO CONTENT - Ab yeh Full Width hai */}
+<section className="w-full bg-white">
+  <div className="w-full overflow-hidden">
+    <article 
+      className="w-full prose prose-2xl max-w-none text-gray-800 leading-relaxed" 
+      dangerouslySetInnerHTML={{ __html: service.content }} 
+    />
+  </div>
+</section>
 
       {/* 4. TESTIMONIALS SECTION */}
       <section className="py-24 bg-white">
