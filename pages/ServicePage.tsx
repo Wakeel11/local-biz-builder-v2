@@ -62,16 +62,14 @@ const ServicePage = () => {
       </section>
 
       {/* 3. MASSIVE SEO CONTENT (Table, Lists, Detailed Text) */}
-      {/* 3. MASSIVE SEO CONTENT - Ab yeh Full Width hai */}
+     {/* 3. MASSIVE SEO CONTENT - Ab yeh Box se bahar hai */}
 <section className="w-full bg-white">
-  <div className="w-full overflow-hidden">
-    <article 
-      className="w-full prose prose-2xl max-w-none text-gray-800 leading-relaxed" 
-      dangerouslySetInnerHTML={{ __html: service.content }} 
-    />
-  </div>
+  {/* Yahan se container aur max-w-4xl hata diya gaya hai */}
+  <article 
+    className="w-full prose prose-2xl max-w-none text-gray-800" 
+    dangerouslySetInnerHTML={{ __html: service.content }} 
+  />
 </section>
-
       {/* 4. TESTIMONIALS SECTION */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 text-center max-w-7xl">
